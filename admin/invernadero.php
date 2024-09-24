@@ -9,8 +9,16 @@ switch($accion){
         break;
     case 'nuevo':
         $data=$_POST['data'];
-        $app->create($data);
-
+        $resultado= $app->create($data);
+        if($resultado){
+            $mensaje="El invernadero se agrego correctamente";
+            $tipo="success";
+        }else{
+            $mensaje="Ocurrio un error al agregar el invernadero";
+            $tipo="danger";
+        }
+        $invernaderos = $app->readAll();
+        include('views/invernadero/index.php');
         break;
     case 'actualizar':
         break;
