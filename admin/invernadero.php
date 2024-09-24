@@ -23,6 +23,21 @@ switch($accion){
     case 'actualizar':
         break;
     case 'eliminar':
+        $id=(isset($_GET['id']))?$_GET['id']:null;
+        if(!is_null($id)){
+            if(is_numeric($id)){
+                $resultado=$app->delete($id);
+                if($resultado){
+                    $mensaje="Se elimino exitosamente el invernadero";
+                    $tipo="success";
+                }else{
+                    $mensaje="Hubo un problema con la eliminacion";
+                    $tipo="danger";
+                }
+            }
+        }
+        $invernaderos = $app->readAll();
+        include 'views/invernadero/index.php';
         break;
     default:
         $invernaderos = $app->readAll();

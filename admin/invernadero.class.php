@@ -25,6 +25,12 @@ class invernadero extends sistema {
 
     function delete ($id) {
         $result = [];
+        $this->conexion();
+        $sql="delete from invernadero where id_invernadero=:id_invernadero";
+        $borrar=$this->con->prepare($sql);
+        $borrar->bindParam(':id_invernadero',$id,PDO::PARAM_INT);
+        $borrar->execute();
+        $result = $borrar->rowCount();
         return $result;
     }
 
