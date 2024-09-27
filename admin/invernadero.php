@@ -29,18 +29,14 @@ switch($accion){
         $data= $_POST['data'];
         $resultado = $app->update($id,$data);
         if($resultado){
-            $mensaje="El invernadero se agrego correctamente";
+            $mensaje="El invernadero se modificó correctamente";
             $tipo="success";
-        }else{
-            $mensaje="Ocurrio un error al agregar el invernadero";
+        } else {
+            $mensaje="Ocurrió un error al modificar el invernadero";
             $tipo="danger";
         }
         $invernaderos = $app->readAll();
         include('views/invernadero/index.php');
-        break;
-    case 'actualizar':
-        $invernaderos=$app->readOne($id);
-        include('views/invernadero/crear.php');
         break;
     case 'eliminar':
         if(!is_null($id)){

@@ -1,6 +1,6 @@
 <?php require('views/header.php') ?>
 <h1><?php if($accion=="crear"):echo('Nuevo');else:echo('Modificar');endif; ?> Invernadero</h1>
-<form method="post" action="invernadero.php?accion=<?php if($accion=="crear"):echo('nuevo');else:echo('modificar');endif;?>" />
+<form method="post" action="invernadero.php?accion=<?php if($accion=="crear"):echo('nuevo');else:echo('modificar&id=' . $invernaderos['id_invernadero']);endif;?>">
     <div class="mb-3">
         <label for="invernadero" class="form-label">Nombre del Invernadero</label>
         <input class="form-control" type="text" name="data[invernadero]" placeholder="Escribe aqui el nombre" id="invernadero"

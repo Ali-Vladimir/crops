@@ -20,13 +20,14 @@ class invernadero extends sistema {
 
     public function update($id, $data) {
         $this->conexion();
-        $sql = "UPDATE invernadero SET invernadero = :invernadero, longitud = :longitud, latitud = :latitud, area = :area WHERE id_invernadero = :id_invernadero";
+        $sql = "UPDATE invernadero SET invernadero = :invernadero, longitud = :longitud, latitud = :latitud, area = :area,fecha_creacion =:fecha_creacion WHERE id_invernadero = :id_invernadero";
         $modificar = $this->con->prepare($sql);
         $modificar->bindParam(':invernadero', $data['invernadero'], PDO::PARAM_STR);
         $modificar->bindParam(':longitud', $data['longitud'], PDO::PARAM_STR);
         $modificar->bindParam(':latitud', $data['latitud'], PDO::PARAM_STR);
         $modificar->bindParam(':area', $data['area'], PDO::PARAM_INT);
         $modificar->bindParam(':id_invernadero', $id, PDO::PARAM_INT);
+        $modificar->bindParam(':fecha_creacion',$data['fecha_creacion'],PDO::PARAM_STR);
         return $modificar->execute();
     }    
 
