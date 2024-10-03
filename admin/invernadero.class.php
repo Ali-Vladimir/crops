@@ -1,5 +1,5 @@
 <?php
-include ('../sistema.class.php');
+require_once ('../sistema.class.php');
 
 class invernadero extends sistema {
     function create ($data) {
